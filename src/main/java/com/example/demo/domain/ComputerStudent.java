@@ -9,14 +9,13 @@ import jakarta.persistence.Id;
 @Entity
 public class ComputerStudent {
 	
-	@Id
-	@Column(name = "id")
-    private String id;
+	  @Id
+      @Column(name = "id")
+      private String id;
 	
-	@Column(name = "name")
-	private String name;
+  	  @Column(name = "name")
+	  private String name;
 	
-
 	  @Column(name = "surname")
 	  private String surname;
 	  
