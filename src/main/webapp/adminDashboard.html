@@ -344,6 +344,18 @@
 					<div id="update" class="panel">
 						<h2>Update Student</h2>
 						<form id="updateForm">
+							
+							<div class="form-group">
+								<label for="update-program-search">Program</label>
+								<select id="update-program-search" name="update-program-search" class="form-control" required
+									aria-placeholder="Select Program">
+									<option value="Life Skills">Life Skills</option>
+									<option value="Computer ">Computer</option>
+									<option value="Retail Management ">Retail Management</option>
+									<option value="Point of Sale ">Point of Sale</option>
+								</select>
+							</div>
+							
 							<div class="form-group">
 								<label for="identity-number-update">Identity Number</label>
 								<input type="text" id="up-up" name="identity-number-update" class="form-control"
@@ -357,6 +369,17 @@
 					<div id="delete" class="panel">
 						<h2>Delete Student</h2>
 						<form id="deleteForm">
+							
+							<div class="form-group">
+								<label for="delete-program-search">Program</label>
+								<select id="delete-program-search" name="delete-program-search" class="form-control" required
+									aria-placeholder="Select Program">
+									<option value="Life Skills">Life Skills</option>
+									<option value="Computer ">Computer</option>
+									<option value="Retail Management ">Retail Management</option>
+									<option value="Point of Sale ">Point of Sale</option>
+								</select>
+							</div>
 					
 							<div class="form-group">
 								<label for="identity-number-delete">Identity Number</label>
@@ -573,6 +596,18 @@
 					<div id="search-form" class="panel">
 						<h2>Search Student</h2>
 						<form id="searchForm">
+							
+							<div class="form-group">
+								<label for="search-program-search">Program</label>
+								<select id="search-program-search" name="search-program-search" class="form-control" required
+									aria-placeholder="Select Program">
+									<option value="Life Skills">Life Skills</option>
+									<option value="Computer ">Computer</option>
+									<option value="Retail Management ">Retail Management</option>
+									<option value="Point of Sale ">Point of Sale</option>
+								</select>
+							</div>
+							
 							<div class="form-group">
 								<label for="identity-number-search">Identity Number</label>
 								<input type="text" id="student-search" name="identity-number-search"
@@ -894,13 +929,21 @@
 
 		}
 
-		// Function to handle submission of delete form
+//##########################################################################################################
 		function submitAndDeleteForm() {
 
-
 			var studentId = document.getElementById('identity-number-delete').value;
-
-			fetch('findStudent')
+			var program = document.getElementById('delete-program-search').value;
+			
+			const requestOptions = {
+			    method: 'POST',
+			    headers: {
+			        'Content-Type': 'application/json'
+			    },
+			    body: JSON.stringify({ name: program })
+			};
+			
+			fetch('findDeleteStudent' , requestOptions)
 				.then(response => response.json())
 				.then(users => {
 					let found = false;
@@ -910,7 +953,7 @@
 							found = true;
 
 							displayErrorMessageDelete("Student Deleted");
-							postStudentId(user.id);
+							postStudentId(user.id , program);
 
 
 						}
@@ -926,13 +969,13 @@
 		}
 
 
-		function postStudentId(studentId) {
+		function postStudentId(studentId , program) {
 			fetch('/delete-student', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({id: studentId})
+				body: JSON.stringify({id: studentId , iProgram: program})
 
 			})
 				.catch(error => {
@@ -1211,13 +1254,22 @@
 			return true;
 		}
 
-
+//################################################################################################################################
 
 		function findStudent() {
 
 			var id = document.getElementById("up-up").value;
+			var program = document.getElementById("update-program-search").value;
 
-			fetch('findStudent')
+			    const requestOptions = {
+			        method: 'POST',
+			        headers: {
+			            'Content-Type': 'application/json'
+			        },
+			        body: JSON.stringify({ name: program })
+			    };
+
+			fetch('findUpdateStudent' , requestOptions)
 				.then(response => response.json())
 				.then(users => {
 					let found = false;
@@ -1263,9 +1315,18 @@
 		function studentSearch() {
 
 
-			var studentId = document.getElementById('student-search').value;
+			var studentId = document.getElementById('student-search').value
+			var program = document.getElementById("search-program-search").value;
+			
+			    const requestOptions = {
+			        method: 'POST',
+			        headers: {
+			            'Content-Type': 'application/json'
+			        },
+			        body: JSON.stringify({ name: program })
+			    };
 
-			fetch('findStudent')
+			fetch('findSearchStudent' , requestOptions)
 				.then(response => response.json())
 				.then(users => {
 					let found = false;

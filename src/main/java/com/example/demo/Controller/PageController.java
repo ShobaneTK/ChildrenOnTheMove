@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -160,14 +160,270 @@ public class PageController {
         return studentRepo.findAll();
     }
 
+    @PostMapping("/findUpdateStudent")
+    @ResponseBody
+    public List<Student> findUpdateStudent(@RequestBody Map<String, String> requestBody) {
+      
+        Student students =  new Student();
+        
+        List<Student> stud = new ArrayList<>();
+
+        String name = requestBody.get("name");
+        
+        if(name.equals("Life")) {
+        	
+        	stud = studentRepo.findAll();
+        }
+        
+        else {
+        	
+        	 if(name.equals("Computer")) {
+             	
+        		 List<ComputerStudent> cStudents = computerRepo.findAll();
+        	    	
+        	    	for(ComputerStudent i : cStudents) {
+        	    		
+        	    		students.setName(i.getName());
+        	    		students .setSurname(i.getSurname());
+        	    		students.setId(i.getId());
+        	    		students.setAddress(i.getAddress());
+        	    		students.setContact(i.getContact());
+        	    		students.setGender(i.getGender());
+        	    		students.setInitial(i.getInitial());
+        	    		students.setMatricStatus(i.getMatricStatus());
+        	    		students.setProgram(i.getProgram());
+        	    		students.setQualification(i.getQualification());
+        	    		students.setTypeWelfare(i.getTypeWelfare());
+        	    		students.setWard(i.getWard());
+        	    		
+        	    		stud.add(students);
+
+        	    	}
+             }
+        	 
+        	 else {
+        	 
+        		 if(name.equals("Retail")) {
+                  	
+            		 List<RetailStudent> cStudents = retailRepo.findAll();
+            	    	
+            	    	for(RetailStudent i : cStudents) {
+            	    		
+            	    		students.setName(i.getName());
+            	    		students .setSurname(i.getSurname());
+            	    		students.setId(i.getId());
+            	    		students.setAddress(i.getAddress());
+            	    		students.setContact(i.getContact());
+            	    		students.setGender(i.getGender());
+            	    		students.setInitial(i.getInitial());
+            	    		students.setMatricStatus(i.getMatricStatus());
+            	    		students.setProgram(i.getProgram());
+            	    		students.setQualification(i.getQualification());
+            	    		students.setTypeWelfare(i.getTypeWelfare());
+            	    		students.setWard(i.getWard());
+            	    		
+            	    		stud.add(students);
+
+            	    	}
+                 }
+        		 
+        	 }
+        	
+        }
+        
+        return stud;
+
+    }
+    
+    @PostMapping("/findSearchStudent")
+    @ResponseBody
+    public List<Student> findSearchStudent(@RequestBody Map<String, String> requestBody) {
+      
+        Student students =  new Student();
+        
+        List<Student> stud = new ArrayList<>();
+
+        String name = requestBody.get("name");
+        
+        if(name.equals("Life")) {
+        	
+        	stud = studentRepo.findAll();
+        }
+        
+        else {
+        	
+        	 if(name.equals("Computer")) {
+             	
+        		 List<ComputerStudent> cStudents = computerRepo.findAll();
+        	    	
+        	    	for(ComputerStudent i : cStudents) {
+        	    		
+        	    		students.setName(i.getName());
+        	    		students .setSurname(i.getSurname());
+        	    		students.setId(i.getId());
+        	    		students.setAddress(i.getAddress());
+        	    		students.setContact(i.getContact());
+        	    		students.setGender(i.getGender());
+        	    		students.setInitial(i.getInitial());
+        	    		students.setMatricStatus(i.getMatricStatus());
+        	    		students.setProgram(i.getProgram());
+        	    		students.setQualification(i.getQualification());
+        	    		students.setTypeWelfare(i.getTypeWelfare());
+        	    		students.setWard(i.getWard());
+        	    		
+        	    		stud.add(students);
+
+        	    	}
+             }
+        	 
+        	 else {
+        	 
+        		 if(name.equals("Retail")) {
+                  	
+            		 List<RetailStudent> cStudents = retailRepo.findAll();
+            	    	
+            	    	for(RetailStudent i : cStudents) {
+            	    		
+            	    		students.setName(i.getName());
+            	    		students .setSurname(i.getSurname());
+            	    		students.setId(i.getId());
+            	    		students.setAddress(i.getAddress());
+            	    		students.setContact(i.getContact());
+            	    		students.setGender(i.getGender());
+            	    		students.setInitial(i.getInitial());
+            	    		students.setMatricStatus(i.getMatricStatus());
+            	    		students.setProgram(i.getProgram());
+            	    		students.setQualification(i.getQualification());
+            	    		students.setTypeWelfare(i.getTypeWelfare());
+            	    		students.setWard(i.getWard());
+            	    		
+            	    		stud.add(students);
+
+            	    	}
+                 }
+        		 
+        	 }
+        	
+        }
+        
+        return stud;
+
+    }
+    
+    @PostMapping("/findDeleteStudent")
+    @ResponseBody
+    public List<Student> findDeleteStudent(@RequestBody Map<String, String> requestBody) {
+      
+        Student students =  new Student();
+        
+        List<Student> stud = new ArrayList<>();
+
+        String name = requestBody.get("name");
+        
+        if(name.equals("Life")) {
+        	
+        	stud = studentRepo.findAll();
+        }
+        
+        else {
+        	
+        	 if(name.equals("Computer")) {
+             	
+        		 List<ComputerStudent> cStudents = computerRepo.findAll();
+        	    	
+        	    	for(ComputerStudent i : cStudents) {
+        	    		
+        	    		students.setName(i.getName());
+        	    		students .setSurname(i.getSurname());
+        	    		students.setId(i.getId());
+        	    		students.setAddress(i.getAddress());
+        	    		students.setContact(i.getContact());
+        	    		students.setGender(i.getGender());
+        	    		students.setInitial(i.getInitial());
+        	    		students.setMatricStatus(i.getMatricStatus());
+        	    		students.setProgram(i.getProgram());
+        	    		students.setQualification(i.getQualification());
+        	    		students.setTypeWelfare(i.getTypeWelfare());
+        	    		students.setWard(i.getWard());
+        	    		
+        	    		stud.add(students);
+
+        	    	}
+             }
+        	 
+        	 else {
+        	 
+        		 if(name.equals("Retail")) {
+                  	
+            		 List<RetailStudent> cStudents = retailRepo.findAll();
+            	    	
+            	    	for(RetailStudent i : cStudents) {
+            	    		
+            	    		students.setName(i.getName());
+            	    		students .setSurname(i.getSurname());
+            	    		students.setId(i.getId());
+            	    		students.setAddress(i.getAddress());
+            	    		students.setContact(i.getContact());
+            	    		students.setGender(i.getGender());
+            	    		students.setInitial(i.getInitial());
+            	    		students.setMatricStatus(i.getMatricStatus());
+            	    		students.setProgram(i.getProgram());
+            	    		students.setQualification(i.getQualification());
+            	    		students.setTypeWelfare(i.getTypeWelfare());
+            	    		students.setWard(i.getWard());
+            	    		
+            	    		stud.add(students);
+
+            	    	}
+                 }
+        		 
+        	 }
+        	
+        }
+        
+        return stud;
+
+    }
+
     @PostMapping("/delete-student")
     @ResponseBody
     public void deleteStudent(@RequestBody Map<String, String> requestBody) {
         String studentId = requestBody.get("id");
+        String program = requestBody.get("iProgram");
+        
+        if(program.equals("Life")) {
+        	
+        	Student student = new Student();
+            student.setId(studentId);
+            studentRepo.delete(student);
+            
+            
+        }
  
-        Student student = new Student();
-        student.setId(studentId);
-        studentRepo.delete(student);
+        else {
+        	
+        	if(program.equals("Computer")) {
+        		
+        		ComputerStudent student = new ComputerStudent();
+        		student.setId(studentId);
+        		computerRepo.delete(student);
+        		
+        	}
+        	
+        	else {
+        		
+        		if(program.equals("Retail")) {
+        			
+        		   RetailStudent student = new RetailStudent();
+        		   student.setId(studentId);
+        		   retailRepo.delete(student);
+        			 
+        		}
+        	}
+        	
+        }
+        
+        
     }
 
     @GetMapping("/logout")
@@ -290,10 +546,7 @@ public class PageController {
     	
         return retailRepo.findAll();
     }
-    
-    
-    
-    
+
     @GetMapping("/fetch_computer_students")
     @ResponseBody
     public List<ComputerStudent> getAllComputertudents() {
